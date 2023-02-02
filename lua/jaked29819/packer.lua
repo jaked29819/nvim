@@ -1,0 +1,26 @@
+-- only required if you have a packer cofigured as 'opt'
+vim.cmd [[packadd packer.nvim]]
+
+return require('packer').startup(function(use)
+
+	--packer can manage itself
+	use 'wbthomason/packer.nvim'
+
+	-- fuzzy finder
+	use { 'nvim-telescope/telescope.nvim', tag='0.1.1',
+	-- or				     , branch = '0.1.x',
+	requires = { {'nvim-lua/plenary.nvim'} }
+	}
+
+	--color schemes
+	use({
+		'rose-pine/neovim',
+		as = 'rose-pine',
+		config = function()
+			require("rose-pine").setup()
+			vim.cmd('colorscheme rose-pine')
+		end
+	})
+
+
+end)
